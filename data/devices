@@ -1,0 +1,3 @@
+- 'android://127.0.0.1:5037/f8f4a508?cap_method=JAVACAP&&ori_method=MINICAPORI&&touch_method=MINITOUCH'
+- 'android://127.0.0.1:5037/emulator-5554?cap_method=MINICAP&&ori_method=MINICAPORI&&touch_method=MINITOUCH'
+- 'android://127.0.0.1:5037/emulator-5556?cap_method=MINICAP&&ori_method=MINICAPORI&&touch_method=MINITOUCH'

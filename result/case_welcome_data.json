@@ -1,0 +1,14 @@
+{
+    "start": "2021-11-05 16:37:43",
+    "script": "case_welcome.air",
+    "tests": {
+        "emulator-5554": {
+            "status": 0,
+            "path": "D:\\pycharm\\make_wine\\case_welcome.air\\log\\emulator-5554\\log.html"
+        },
+        "emulator-5556": {
+            "status": 0,
+            "path": "D:\\pycharm\\make_wine\\case_welcome.air\\log\\emulator-5556\\log.html"
+        }
+    }
+}
