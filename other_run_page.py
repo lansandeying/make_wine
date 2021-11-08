@@ -155,7 +155,6 @@ def get_json_value_by_key(in_json, target_key, results=[]):
         if isinstance(value, dict):
             get_json_value_by_key(value,target_key)
     return results
-
 #获取路径
 def get_path(content,device=None,air="openCard.air"):
     root_path = os.getcwd()
