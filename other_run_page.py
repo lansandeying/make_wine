@@ -1,12 +1,19 @@
 # -*- encoding=utf-8 -*-
 # Run Airtest in parallel on multi-device
+# 导入系统库
 import os
+# 导入错误报告输出库
 import traceback
+# 进程库
 import subprocess
+#浏览器控制函数，可以直接打开浏览器
 import webbrowser
+
 import time
 import json
+#导入文件覆盖库
 import shutil
+#airtest的adb命令
 from airtest.core.android.adb import ADB
 from jinja2 import Environment, FileSystemLoader
 
@@ -120,7 +127,7 @@ def run_summary(data):
         html = env.get_template('report_tpl.html').render(data=summary)
         with open("report.html", "w", encoding="utf-8") as f:
             f.write(html)
-        webbrowser.open("report.html")
+        webbrowser.open("report.html") #直接打开html
     except Exception as e:
         traceback.print_exc()
 
@@ -155,6 +162,7 @@ def get_json_value_by_key(in_json, target_key, results=[]):
         if isinstance(value, dict):
             get_json_value_by_key(value,target_key)
     return results
+
 #获取路径
 def get_path(content,device=None,air="openCard.air"):
     root_path = os.getcwd()
@@ -202,9 +210,9 @@ if __name__ == '__main__':
     Init variables here
     """
     #获取所有已连接的设备列表
-    devices = [tmp[0] for tmp in ADB().devices()]
+    # devices = [tmp[0] for tmp in ADB().devices()]
     #设置指定设备执行测试用例
-    # devices = ["127.0.0.1:5037/emulator-5554"]
+    devices = ["emulator-5554",'emulator-5556']
     #获取所有测试用例
     airs = get_cases("root")
     #将登录用例排在最前面执行，退出用例排在最后面执行
