@@ -17,7 +17,7 @@ def now_Time(doing):
 
 # 脚本初始化
 auto_setup(__file__, devices=[
-    "android://127.0.0.1:5037/f8f4a508?cap_method=JAVACAP&&ori_method=MINICAPORI&&touch_method=MINITOUCH"],
+    "android://127.0.0.1:5037/emulator-5554?cap_method=JAVACAP&&ori_method=MINICAPORI&&touch_method=MINITOUCH"],
            logdir=path_log)
 
 
@@ -83,7 +83,6 @@ def enter_wine():
     # 获取控件的“text”属性值
     value = poco("com.lihui.winemaking:id/tlText").attr("text")
     assert_equal(value, "首页", "进入首页成功")
-    assert_not_equal()
 
 
 def login():
@@ -99,7 +98,9 @@ def login():
     click_by_name("com.lihui.winemaking:id/mCbAgreement")
     sleep(1.0)
     # 点击账号且输入
+
     click_by_name("com.lihui.winemaking:id/etPhone")
+    print("----------------------------------")
     text("13510677061")
     sleep(1.0)
     # 点击获取验证码
@@ -266,9 +267,9 @@ try:
     poco = AndroidUiautomationPoco(use_airtest_input=True, screenshot_each_action=False)
 
     # 开启录屏
-    adb = ADB(serialno="f8f4a508")
-    recorder = Recorder(adb)
-    recorder.start_recording()
+    # adb = ADB(serialno="f8f4a508")
+    # recorder = Recorder(adb)
+    # recorder.start_recording()
 
     # 重启应用，保证初始化状态一致
     clear_app("com.lihui.winemaking")
@@ -277,15 +278,15 @@ try:
     # 执行用例
     enter_wine()
     login()
-    list_check()
-    check_goods()
-    check_account()
-    check_order()
-    user_message()
-    about_us()
+    # list_check()
+    # check_goods()
+    # check_account()
+    # check_order()
+    # user_message()
+    # about_us()
 
     # 结束录屏
-    recorder.stop_recording(output=path_log + r"\wine.mp4")
+    # recorder.stop_recording(output=path_log + r"\wine.mp4")
 
 finally:
     simple_report(__file__, logpath=path_log, output=path_log + r"\log.html")

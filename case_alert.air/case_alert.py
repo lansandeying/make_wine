@@ -29,6 +29,7 @@ try:
     start_app("com.lihui.winemaking")
     print("-------------------------------------------")
     poco("com.lihui.winemaking:id/tvAgree").click()
+    poco("")
 finally:
     pass
 
