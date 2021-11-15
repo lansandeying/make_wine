@@ -1,4 +1,4 @@
-#coding = utf-8
+# -*- encoding=utf-8 -*-
 from lib import common
 from conf import setting
 from lib import log
@@ -8,26 +8,26 @@ class Alert_page():
         self.log=log.MyLog()
         self.common=common.Common()
         self.app_name=setting.app_name
-        #²»Í¬Òâ°´Å¥
+        #ä¸åŒæ„æŒ‰é’®
         self.disagree="com.lihui.winemaking:id/tvDisagree"
-        #Í¬Òâ°´Å¥
+        #åŒæ„æŒ‰é’®
         self.agree="com.lihui.winemaking:id/tvAgree"
-        #Í¬Òâ¹Ø±Õ
+        #åŒæ„å…³é—­
         self.close="com.lihui.winemaking:id/tvClose"
 
-    #µã»÷²»Í¬Òâ
+    #ç‚¹å‡»ä¸åŒæ„
     def click_disagree(self):
         self.common.click_by_name(self.disagree)
 
-    #µã»÷Í¬Òâ
+    #ç‚¹å‡»åŒæ„
     def click_agree(self):
         self.common.click_by_name(self.agree)
 
-    #µã»÷¹Ø±Õ
+    #ç‚¹å‡»å…³é—­
     def click_close(self):
         self.common.click_by_name(self.close)
 
-    #Ê×´Î½øÈëAPP²»Í¬ÒâĞ­Òéµã»÷ÍË³ö
+    #é¦–æ¬¡è¿›å…¥APPä¸åŒæ„åè®®ç‚¹å‡»é€€å‡º
     def close_app(self):
         try:
             self.common.clear_app(self.app_name)
@@ -39,7 +39,7 @@ class Alert_page():
         finally:
             pass
 
-    #½øÈëÊ×Ò³
+    #è¿›å…¥é¦–é¡µ
     def enter_home(self):
         try:
             self.common.clear_app(self.app_name)

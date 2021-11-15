@@ -7,6 +7,7 @@ from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 from airtest.core.android.recorder import *
 from airtest.core.android.adb import *
 import os
+import traceback
 
 path_log = os.getcwd() + r"\log"
 
@@ -16,9 +17,9 @@ def now_Time(doing):
 
 
 # 脚本初始化
-auto_setup(__file__, devices=[
-    "android://127.0.0.1:5037/emulator-5554?cap_method=JAVACAP&&ori_method=MINICAPORI&&touch_method=MINITOUCH"],
-           logdir=path_log)
+# auto_setup(__file__, devices=[
+#     "android://127.0.0.1:5037/emulator-5554?cap_method=JAVACAP&&ori_method=MINICAPORI&&touch_method=MINITOUCH"],
+#            logdir=path_log)
 
 
 def click_by_name(name_value):
@@ -98,9 +99,7 @@ def login():
     click_by_name("com.lihui.winemaking:id/mCbAgreement")
     sleep(1.0)
     # 点击账号且输入
-
     click_by_name("com.lihui.winemaking:id/etPhone")
-    print("----------------------------------")
     text("13510677061")
     sleep(1.0)
     # 点击获取验证码
@@ -278,15 +277,16 @@ try:
     # 执行用例
     enter_wine()
     login()
-    # list_check()
-    # check_goods()
-    # check_account()
-    # check_order()
-    # user_message()
-    # about_us()
+    list_check()
+    check_goods()
+    check_account()
+    check_order()
+    user_message()
+    about_us()
 
     # 结束录屏
     # recorder.stop_recording(output=path_log + r"\wine.mp4")
-
-finally:
-    simple_report(__file__, logpath=path_log, output=path_log + r"\log.html")
+except Exception as e:
+    traceback.print_exc()
+# finally:
+#     simple_report(__file__, logpath=path_log, output=path_log + r"\log.html")

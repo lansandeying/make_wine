@@ -212,14 +212,14 @@ if __name__ == '__main__':
     #获取所有已连接的设备列表
     devices = [tmp[0] for tmp in ADB().devices()]
     #设置指定设备执行测试用例
-    # devices = ["emulator-5554"]
+    # devices = ["54fbccd"]
     #获取所有测试用例
     airs = get_cases("root")
     #将登录用例排在最前面执行，退出用例排在最后面执行
     # sort_airs = sort_cases(airs,"loginPro.air","loginOutPro.air")
     #获取指定用例,按顺序执行
     # sort_airs = ["openCardPro.air","openOrderPro.air","quickMoneyPro.air"]
-    sort_airs = ["case_alert.air","case_welcome.air"]
+    sort_airs = ["case_login.air"]
     """
     执行脚本
     excute scripts

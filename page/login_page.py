@@ -1,26 +1,29 @@
-#coding = utf-8
+# -*- encoding=utf-8 -*-
 from lib import common
-from conf import setting
-from lib import log
+from airtest.core.api import *
+import os
+import traceback
+
+path_log = os.getcwd() + r"\log"
 
 class Login_page():
     def __init__(self):
-        self.log = log.MyLog()
         self.common = common.Common()
-        #�ҵĲ˵���
+        #我的菜单栏
         self.mine="com.lihui.winemaking:id/tlIcon"
-        #��ת��¼��ť
+        #跳转登录按钮/登录成功名称按钮
         self.toLogin="com.lihui.winemaking:id/mTvUserName"
-        #Э�鰴ť
+        #协议按钮
         self.agreement="com.lihui.winemaking:id/mCbAgreement"
-        #�˺������
+        #账号输入框
         self.enterPhone="com.lihui.winemaking:id/etPhone"
-        #��ȡ��֤�밴ť
+        #获取验证码按钮
         self.getCode="com.lihui.winemaking:id/tvGetCode"
-        #��֤�������
+        #验证码输入框
         self.enterCode="com.lihui.winemaking:id/etCode"
-        #��¼��ť
+        #登录按钮
         self.login="com.lihui.winemaking:id/tvLogin"
+
 
     def click_mine(self):
         self.common.click_by_nams(self.mine,1)
@@ -43,7 +46,7 @@ class Login_page():
     def click_login(self):
         self.common.click_by_name(self.login)
 
-    def login(self,phone_num,code_num):
+    def login_set(self,phone_num="18033084759",code_num="123456"):
         try:
             self.click_mine()
             self.click_toLogin()
@@ -55,6 +58,22 @@ class Login_page():
             self.common.send_text(code_num)
             self.click_login()
         except Exception as msg:
-            self.log.error("s%" % msg)
+            traceback.print_exc()
         finally:
             pass
+
+    def assert_login(self,value2):
+        try:
+            text_value = self.common.get_attr_text(self.toLogin)
+            self.common.assert_equal(text_value, value2, "验证登录登录成功")
+        except Exception as msg:
+            traceback.print_exc("登录失败")
+        finally:
+            pass
+
+#
+# if __name__=="__main__":
+#     pass
+    # auto_setup(__file__, devices=[
+    # "android://127.0.0.1:5037/emulator-5554?cap_method=JAVACAP&&ori_method=MINICAPORI&&touch_method=MINITOUCH"],
+    #         logdir=path_log)

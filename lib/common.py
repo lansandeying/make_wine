@@ -6,6 +6,7 @@ from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 from airtest.core.android.adb import *
 import os
 from lib import log
+import traceback
 
 
 class Common():
@@ -56,6 +57,14 @@ class Common():
             print("%s" % msg)
         else:
             self.poco(text=text_value).click()
+
+    def get_attr_text(self,name_value):
+        try:
+            self.poco(name=name_value).wait_for_appearance()
+        except Exception as msg:
+            traceback.print_exc()
+        else:
+            return self.poco(name=name_value).get_text()
 
     def swipe_by_name_up(self,name_value):
         try:
