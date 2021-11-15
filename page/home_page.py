@@ -2,6 +2,7 @@
 from lib import common
 from conf import setting
 from lib import log
+import traceback
 
 class Home_page():
     def __init__(self):
@@ -26,6 +27,28 @@ class Home_page():
         self.common.click_by_name(self.download)
 
     def click_goods(self):
-        self.common.click_by_nams(self.goods)
+        self.common.click_by_nams(self.goods,1)
+
+    #点击进入商品详情
+    def enter_goods_detail(self):
+        try:
+            self.click_home()
+            self.click_goods()
+        except Exception as msg:
+            traceback.print_exc()
+        finally:
+            pass
+    #遍历商品详情
+    def check_goods_detail(self):
+        try:
+            for i in range(2):
+                self.common.click_by_nams(self.goods, i)
+                self.common.back()
+        except Exception as msg:
+            traceback.print_exc()
+        finally:
+            pass
+
+
 
     

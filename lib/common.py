@@ -37,24 +37,24 @@ class Common():
     def click_by_name(self,name_value):
         try:
             self.poco(name=name_value).wait_for_appearance()
-        except Exception as msg:
-            print("%s" % msg)
+        except Exception as e:
+            traceback.print_exc()
         else:
             self.poco(name=name_value).click()
 
     def click_by_nams(self,name_value,index):
         try:
             self.poco(name=name_value).wait_for_appearance()
-        except Exception as msg:
-            print("%s" % msg)
+        except Exception as e:
+            traceback.print_exc()
         else:
             self.poco(name=name_value)[index].click()
 
     def click_by_text(self,text_value):
         try:
             self.poco(text=text_value).wait_for_appearance()
-        except Exception as msg:
-            print("%s" % msg)
+        except Exception as e:
+            traceback.print_exc()
         else:
             self.poco(text=text_value).click()
 
@@ -69,16 +69,16 @@ class Common():
     def swipe_by_name_up(self,name_value):
         try:
             self.poco(name=name_value).wait_for_appearance()
-        except Exception as msg:
-            print("%s" % msg)
+        except Exception as e:
+            traceback.print_exc()
         else:
             self.poco(name=name_value).swipe('up')
 
     def swipe_by_name_down(self,name_value):
         try:
             self.poco(name=name_value).wait_for_appearance()
-        except Exception as msg:
-            print("%s" % msg)
+        except Exception as e:
+            traceback.print_exc()
         else:
             self.poco(name=name_value).swipe('down')
 
