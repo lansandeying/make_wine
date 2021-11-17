@@ -6,8 +6,9 @@ from airtest.report.report import simple_report
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 from airtest.core.android.recorder import *
 from airtest.core.android.adb import *
-import os
+
 import traceback
+import os
 
 path_log = os.getcwd() + r"\log"
 

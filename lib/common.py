@@ -9,6 +9,7 @@ from lib import log
 import traceback
 
 
+
 class Common():
     def __init__(self):
         self.log = log.MyLog()
@@ -30,6 +31,12 @@ class Common():
 
     def send_text(self,value):
         text(value)
+
+    def poco_text(self,id,value):
+        try:
+            self.poco(id).set_text(value)
+        except Exception as e:
+            traceback.print_exc()
 
     def back(self):
         keyevent("BACK")

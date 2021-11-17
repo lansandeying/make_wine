@@ -1,21 +1,21 @@
-#coding = utf-8
+# -*- encoding=utf-8 -*-
 from lib import common
-from conf import setting
-from lib import log
 import traceback
 
 class Home_page():
     def __init__(self):
-        self.log = log.MyLog()
         self.common = common.Common()
-        #Ê×Ò³²Ëµ¥À¸
+        #é¦–é¡µèœå•æ 
         self.home = "com.lihui.winemaking:id/tlIcon"
-        #ÑûÇëÓĞ½±
+        #é‚€è¯·æœ‰å¥–
         self.share = "com.lihui.winemaking:id/ivInviteReward"
-        #ÏÂÔØÓĞÀñ
+        #ä¸‹è½½æœ‰ç¤¼
         self.download = "com.lihui.winemaking:id/ivOrderGift"
-        #ÉÌÆ·
+        #å•†å“
         self.goods = "com.lihui.winemaking:id/ivProduct"
+        
+        #ç‚¹å‡»è´­ä¹°
+        self.buy="com.lihui.winemaking:id/mTvBuyNow"
 
     def click_home(self):
         self.common.click_by_name(self.home)
@@ -28,8 +28,11 @@ class Home_page():
 
     def click_goods(self):
         self.common.click_by_nams(self.goods,1)
+        
+    def click_buyNow(self):
+        self.common.click_by_name(self.buyNow)
 
-    #µã»÷½øÈëÉÌÆ·ÏêÇé
+    #ç‚¹å‡»è¿›å…¥å•†å“è¯¦æƒ…
     def enter_goods_detail(self):
         try:
             self.click_home()
@@ -38,7 +41,7 @@ class Home_page():
             traceback.print_exc()
         finally:
             pass
-    #±éÀúÉÌÆ·ÏêÇé
+    #éå†å•†å“è¯¦æƒ…
     def check_goods_detail(self):
         try:
             for i in range(2):
@@ -49,6 +52,14 @@ class Home_page():
         finally:
             pass
 
+    def assert_goods_detail(self, value2="ç«‹å³è´­ä¹°"):
+        try:
+            text_value = self.common.get_attr_text(self.buy)
+            self.common.assert_equal(text_value, value2, "è¿›å…¥å•†å“è¯¦æƒ…æˆåŠŸ")
+        except Exception as msg:
+            traceback.print_exc()
+        finally:
+            pass
 
 
     
