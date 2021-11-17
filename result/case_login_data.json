@@ -1,7 +1,11 @@
 {
-    "start": "2021-11-15 16:01:21",
+    "start": "2021-11-17 16:59:01",
     "script": "case_login.air",
     "tests": {
+        "f8f4a508": {
+            "status": 0,
+            "path": "D:\\pycharm\\make_wine\\case_login.air\\log\\f8f4a508\\log.html"
+        },
         "emulator-5554": {
             "status": 0,
             "path": "D:\\pycharm\\make_wine\\case_login.air\\log\\emulator-5554\\log.html"

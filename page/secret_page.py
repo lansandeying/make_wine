@@ -4,6 +4,7 @@ import os
 import traceback
 from page import pay_page
 from page import order_detail_page
+import time
 
 path_log = os.getcwd() + r"\log"
 
@@ -36,7 +37,7 @@ class Secret_page(pay_page.Pay_page):
         self.common.click_by_name(self.mTvConfirm)
 
     # 输入密码
-    def set_secret(self,secret_num="190711"):
+    def set_secret(self):
         try:
             self.click_psdEditText()
             for i in range(6):
@@ -48,11 +49,12 @@ class Secret_page(pay_page.Pay_page):
             pass
 
 
-    # 断言进入输入密码页
-    def assert_secret_page(self, value2="请输入支付密码"):
+    # 断言进入支付成功页
+    def assert_pay_success_page(self, value2="支付成功"):
+        time.sleep(5)
         try:
             text_value = self.common.get_attr_text(self.mTitleTv)
-            self.common.assert_equal(text_value, value2, "进入输入密码页成功")
+            self.common.assert_equal(text_value, value2, "进入支付成功页成功")
         except Exception as msg:
             traceback.print_exc()
         finally:
@@ -61,22 +63,11 @@ class Secret_page(pay_page.Pay_page):
 
 if __name__ == "__main__":
     # 脚本初始化
-    auto_setup(__file__, devices=[
-        "android://127.0.0.1:5037/f8f4a508"],logdir=path_log)
-        # "android://127.0.0.1:5037/emulator-5554"], logdir=path_log)
-    # g = order_detail_page.Order_detail_page()
-    # g.enter_goods_detail()
-    # g.assert_goods_detail()
-    # g.buy_goods()
-    # g.assert_order_detail()
-    # g.make_order()
-    # g.assert_pay_page()
-    #
-    # p = Secret_page()
-    # p.pay_by_mCbBalance()
-    # p.assert_secret_page()
-    s=Secret_page()
-    s.set_secret()
+    # auto_setup(__file__, devices=[
+    #     "android://127.0.0.1:5037/f8f4a508"],logdir=path_log)
+    print(os.getcwd()+r"\tpl1637054447828.png")
+
+
 
 
 
