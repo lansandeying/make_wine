@@ -30,7 +30,7 @@ def run(devices, airs):
             results = load_jdon_data(air)
             tasks = run_on_multi_device(devices, air, results)
             for task in tasks:
-                status = task['process'].wait()
+                status = task['process'].wait() #task['process']带出的是subprocess.Popen执行完返回的对象
                 results['tests'][task['dev']] = run_one_report(task['air'], task['dev'])
                 results['tests'][task['dev']]['status'] = status
                 name = air.split(".")[0]
@@ -61,7 +61,7 @@ def run_on_multi_device(devices, air, results):
         ]
         try:
             tasks.append({
-                'process': subprocess.Popen(cmd, cwd=os.getcwd()),
+                'process': subprocess.Popen(cmd, cwd=os.getcwd()), #这里给字典value赋值的时候，subprocess.Popen就已经执行了
                 'dev': dev,
                 'air': air
             })
