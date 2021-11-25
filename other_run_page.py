@@ -30,7 +30,7 @@ def run(devices, airs):
             results = load_jdon_data(air)
             tasks = run_on_multi_device(devices, air, results)
             for task in tasks:
-                status = task['process'].wait() #task['process']带出的是subprocess.Popen执行完返回的对象
+                status = task['process'].wait() #task['process']带出的是subprocess.Popen执行完返回的对象.
                 results['tests'][task['dev']] = run_one_report(task['air'], task['dev'])
                 results['tests'][task['dev']]['status'] = status
                 name = air.split(".")[0]
@@ -61,7 +61,7 @@ def run_on_multi_device(devices, air, results):
         ]
         try:
             tasks.append({
-                'process': subprocess.Popen(cmd, cwd=os.getcwd()), #这里给字典value赋值的时候，subprocess.Popen就已经执行了
+                'process': subprocess.Popen(cmd, cwd=os.getcwd()), #这里给字典value赋值的时候，subprocess.Popen就已经执行了。这里用popen而不用subprocess.call。因为需要保证用例执行完，再生成报告。保证用例执行完，需要主动进行交互确保，需要subprocess.popen.wait
                 'dev': dev,
                 'air': air
             })
