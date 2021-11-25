@@ -93,7 +93,7 @@ def run_one_report(air, dev):
                 "--lang",
                 "zh"
             ]
-            ret = subprocess.call(cmd, shell=True, cwd=os.getcwd())
+            ret = subprocess.call(cmd, shell=True, cwd=os.getcwd())#这里生成报告，只需要进程运行到运行完成。不需要主动判断是否运行完成，所以用subprocess.call
             return {
                     'status': ret,
                     'path': os.path.join(log_dir, 'log.html')
